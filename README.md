@@ -2,6 +2,32 @@
 This project implements a scalable e-commerce application inspired by the Best Buy retail environment, deployed on Azure Kubernetes Service (AKS). 
 The architecture employs a microservices pattern with asynchronous messaging to ensure fast checkout and resilient order fulfillment.
 
+```mermaid
+graph TD
+    subgraph Client Applications
+        A[Store-Front - Customer UI] -->|REST/HTTP| B[Product Service]
+        A -->|REST/HTTP| C[Order Service]
+        D[Store-Admin - Management UI] -->|REST/HTTP| C
+    end
+
+    subgraph Backend Microservices
+        C -->|Creates Order| E[(MongoDB)]
+        C -->|Publishes 'Order Created'| F[(RabbitMQ)]
+        B -->|Fetches Products| E
+        G[Makeline Service - Worker] -->|Consumes 'Order Created'| F
+        G -->|Updates Status| E
+    end
+
+    style A fill:#e6ffe6,stroke:#3c3
+    style D fill:#e6ffe6,stroke:#3c3
+    style B fill:#ffe6e6,stroke:#c33
+    style C fill:#ffe6e6,stroke:#c33
+    style G fill:#ffe6e6,stroke:#c33
+    style E fill:#fff3e6,stroke:#e69
+    style F fill:#e6f3ff,stroke:#66a
+```
+
+
 
 ## 1. Application Explanation
 
