@@ -89,4 +89,8 @@ The following tools were installed and configured: git, docker, kubectl, and the
 | **Makeline Service** | [https://github.com/RamyMaarouf/makeline-service-finalproject1.git] | `maar0006/makeline-service-finalproject1:latest` |
 
 ## 5. Video Link
+- First video explaining the required deliverables and the issue I was facing.
 [https://youtu.be/kYOdadltt88]
+
+- Second video demonstrating the fully functional BestBuy project after troubleshooting.
+[https://youtu.be/ABpbhAK9vqA]
